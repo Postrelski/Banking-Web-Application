@@ -4,7 +4,7 @@ A simple javascript banking application.
 
 Made with JS, HTML, & CSS.
 
-Allows users to login, transfer money to other others, request loans from bank, & to close their own accounts.
+Allows users to login, transfer money to other users, request loans from bank, & to close their own account.
 
 Sorting feature allows users to view all transaction in ascending order.
 
