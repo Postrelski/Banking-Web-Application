@@ -130,6 +130,22 @@ const updateUI = function (acc) {
 // GLOBAL VARIABLES
 let currentAccount, timer;
 
+// --------------------
+// FAKE LOGIN
+// --------------------
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month =`${now.getMonth() + 1}`.padStart(2,0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+labelDate.textContent = `${month}/${day}/${year}`;
+// This will be the format = month/day/year
+
 // EVENT HANDLERS
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
