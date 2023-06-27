@@ -6,7 +6,7 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Matthew P',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -127,9 +127,10 @@ const updateUI = function (acc) {
       calcDisplaySummary(acc);
 }
 
-// EVENT HANDLERS
-let currentAccount;
+// GLOBAL VARIABLES
+let currentAccount, timer;
 
+// EVENT HANDLERS
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -147,6 +148,9 @@ btnLogin.addEventListener('click', function (e) {
     //Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    if (timer) clearInterval(timer);
+    timer = startLogoutTime();
 
     // Update UI
     updateUI(currentAccount);
@@ -170,6 +174,10 @@ btnTransfer.addEventListener('click', function(e) {
 
           // Update UI
       updateUI(currentAccount);
+
+      // reset the timer
+      clearInterval(timer);
+      timer = startLogoutTime();
   } 
 })
 
@@ -186,6 +194,10 @@ btnLoan.addEventListener('click', function(e) {
 
       // Update UI
       updateUI(currentAccount);
+
+      // reset the timer
+      clearInterval(timer);
+      timer = startLogoutTime();
   }
   inputLoanAmount.value = '';
 })
@@ -194,7 +206,6 @@ btnClose.addEventListener('click', function(e) {
 
   // prvents the page from refreshing each button click
   e.preventDefault();
-  
   // checks if the user & pw we logged in with matches the account 
   // we are trying to delete!
   if (
@@ -224,6 +235,38 @@ btnSort.addEventListener('click', function(e) {
 });
 
 
+// Method for website timer
+const startLogoutTime = function () {
+
+  // Call the timer every second
+  const tick  = function() {
+
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    // In Each Call print the remaining time to UI
+    labelTimer.textContent = min + ':' + sec;
+  
+    // When 0 seconds, stop timer and logout user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+
+      // Decrease 1s
+      time --;
+  };
+
+  // Set time to 5 minutes
+  let time = 300;
+
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+
+};
 
 
 // LECTURE MATERIAL
@@ -309,8 +352,3 @@ btnSort.addEventListener('click', function(e) {
 
 //   }
 // })
-
-
-
-
-
