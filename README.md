@@ -1,6 +1,6 @@
 # JS-Bank-App
 
-A simple javascript banking application.
+A modern javascript banking application.
 
 Made with JS, HTML, & CSS.
 
