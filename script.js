@@ -133,9 +133,6 @@ let currentAccount, timer;
 // --------------------
 // FAKE LOGIN
 // --------------------
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
 
 const now = new Date();
 const day = `${now.getDate()}`.padStart(2, 0);
@@ -283,88 +280,3 @@ const startLogoutTime = function () {
   return timer;
 
 };
-
-
-// LECTURE MATERIAL
-
-// find method will return the first element that satifies the condition
-// const first = array.find(mov => mov < 0);
-
-// // maximum value
-// // this will keep track of the highest value
-// // reduce method is the most powerful array method
-// const max = account1.movements.reduce((acc, mov) => {
-//   if (acc > mov) return acc;
-//   else return mov;
-// }, account1.movements[0])
-// console.log(max);
-
-// // each array method will send the input data somewhere
-// // perform its operations and then spit the data back out
-// const eurToUsd = 1.1;
-// const totalDepositUSD = account1.movements
-//   .filter(mov => mov > 0)
-//   .map(mov => mov * eurToUsd)
-//   .reduce((acc, mov) => acc + mov, 0);
-// console.log(totalDepositUSD);
-
-
-// // filter method that will return only what is above or below a certain value
-// const deposits = account1.movements.filter(function (mov) {
-//   return mov > 0;
-// })
-// const withdrawals = account1.movements.filter(function (mov) {
-//   return mov < 0;
-// })
-// console.log(account1.movements);
-// console.log(deposits);
-// console.log(withdrawals);
-
-
-// accumulator -> SNOWBAL
-// reduce has a new parameter call accumulator
-// this is used to find totals. 
-// we just need to add accumulartor to the current to find max sums
-// we can specify which number to start adding from. in this case we chose '0'
-// const arrMov = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// console.log(arrMov);
-// const balance = arrMov.reduce(function(acc, cur, i ,arr) {
-//   console.log(`Iteration ${i}: ${acc}`);
-//   return acc + cur;
-// }, 0);
-// console.log(balance);
-
-// // Here is it with arrow function format. Just an easy way to find sums
-// // here we are starting at '1', arbitrarily
-// const balance2 = arrMov.reduce( (acc, curr) => acc + curr, 1)
-// console.log(balance2);
-
-////////////////////////////
-// a lecture on maps
-////////////////////////////
-
-// map method returns a new array with modified results
-// map method uses a function and return statement
-// const movements = account1.movements;
-// const eurToUsd = 1.1;
-
-// const movementsUSD = movements.map(function (mov) {
-//   return mov * eurToUsd;
-// });
-// console.log(movements);
-// console.log(movementsUSD);
-
-// // same thing but with arrow function
-// // it still has a return statement...
-// const movementsUSD_2 = movements.map(mov => mov * eurToUsd);
-// console.log(movementsUSD_2);
-
-// movements.map((mov, i, arr) => {
-//   if(mov > 0) {
-
-//     return `Movement ${i + 1}: You Desposited ${mov}`
-
-//    } else {
-
-//   }
-// })
